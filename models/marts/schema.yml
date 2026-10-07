@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: fct_interactions
+    description: One row per customer interaction (ticket or email) with AI sentiment and category.
+    columns:
+      - name: interaction_id
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_key
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_key
+      - name: channel
+        data_tests:
+          - accepted_values:
+              values: ['support_ticket', 'email']
+      - name: sentiment
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['positive', 'negative', 'neutral', 'mixed', 'unknown']
+      - name: category
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['Billing', 'Refund', 'Technical Issue', 'Account', 'Service Outage', 'Feedback', 'Other']
+
+  - name: dim_customers
+    description: One row per customer per channel with interaction and sentiment rollups.
+    columns:
+      - name: customer_key
+        data_tests:
+          - unique
+          - not_null
+
+  - name: agg_sentiment_by_category
+    description: Interaction counts by channel, AI category and sentiment.
+
+  - name: dbt_tickets_by_service
+    description: Ticket counts by service type and contact preference.

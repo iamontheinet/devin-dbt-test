@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_support_tickets
+    description: Cleaned support tickets.
+    columns:
+      - name: ticket_id
+        data_tests:
+          - not_null
+      - name: message_text
+        data_tests:
+          - not_null
+
+  - name: stg_emails
+    description: Cleaned customer emails.
+    columns:
+      - name: ticket_id
+        data_tests:
+          - not_null
+      - name: user_id
+        data_tests:
+          - not_null
+      - name: message_text
+        data_tests:
+          - not_null

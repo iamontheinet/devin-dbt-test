@@ -16,3 +16,9 @@ clean-targets:
 models:
   devin_dbt_test:
     +materialized: view
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table
