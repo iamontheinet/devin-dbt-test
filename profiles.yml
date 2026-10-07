@@ -1,0 +1,12 @@
+devin_dbt_test:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: placeholder_account
+      user: placeholder_user
+      role: DEVIN_MCP_ROLE
+      warehouse: DASH_WH_L
+      database: DASH_DB
+      schema: DEVIN_DEV
+      threads: 4

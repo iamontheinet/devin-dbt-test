@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: dash_schema
+    database: DASH_DB
+    schema: DASH_SCHEMA
+    tables:
+      - name: SUPPORT_TICKETS

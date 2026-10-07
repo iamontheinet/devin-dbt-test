@@ -1,0 +1,18 @@
+name: 'devin_dbt_test'
+version: '1.0.0'
+config-version: 2
+
+profile: 'devin_dbt_test'
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  devin_dbt_test:
+    +materialized: view
